@@ -1,8 +1,7 @@
 #include "BlinkyController.h"
 
 
-BlinkyController::BlinkyController(std::shared_ptr<Character> character):
-	Controller(character){
+BlinkyController::BlinkyController(std::shared_ptr<Character> character):Controller(character){
 }
 
 BlinkyController::~BlinkyController() {
