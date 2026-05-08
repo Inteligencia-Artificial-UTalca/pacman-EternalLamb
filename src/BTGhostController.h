@@ -7,7 +7,7 @@
 
 #ifndef BTGHOSTCONTROLLER_H_
 #define BTGHOSTCONTROLLER_H_
-
+#pragma once
 #include "Controller.h"
 #include "BehaviorTree.h"
 #include <chrono>

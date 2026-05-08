@@ -12,7 +12,7 @@
 Info* Info::info=nullptr;
 
 
-BTGhostController::BTGhostController(std::shared_ptr<Character> character):Controller(character),root(std::make_shared<Selector>())  {
+BTGhostController::BTGhostController(std::shared_ptr<Character> character):Controller(character),root(std::make_shared<Selector>()){
 
 	auto filter = std::make_shared<Filter>();
 	filter->addCondition(std::make_shared<Powerpill>());
@@ -54,7 +54,7 @@ Status TimeOut::update(){
 }
 
 Status Chase::update(){
-	//std::cerr << " Chase \n" ;
+	std::cerr << " Chase \n" ;
 	auto character = Info::getInfo()->in_character;
 	auto gs = Info::getInfo()->in_gamestate;
 	auto target= gs->getMaze().getNodePos(gs->getPacmanPos());
@@ -98,7 +98,7 @@ Frightened::Frightened() : Behavior(), e(rand()), uniform_dist(0,3){
 }
 
 Status Frightened::update(){
-	//std::cerr << " Frightened \n" ;
+	std::cerr << " Frightened \n" ;
 	auto character = Info::getInfo()->in_character;
 	auto gs = Info::getInfo()->in_gamestate;
 	std::vector<Move> moves;
@@ -118,7 +118,7 @@ Scatter :: Scatter() : Behavior(){
 }
 
 Status Scatter::update(){
-	//std::cerr << " Scatter \n" ;
+	std::cerr << " Scatter \n" ;
 	if(target.first == -1){
 		target = Info::getInfo()->in_gamestate->getMaze().getPowerPillPositions()[0];
 	}
