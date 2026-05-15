@@ -95,7 +95,8 @@ SimplePacmanController::getMove(const GameState& game){
 	//arrancar de fantasmas cercanos que me pueden comer 
 	for(int i=0;i<4;i++){
 		if((!ghostsEdible[i])){
-			float tempFear=1.0f-1.0f/(1.0f+pow(2.718f * 0.45f,-getDistanceToGhost(game,i)+32.0f));//logistica
+			//cambio de formula para que el miedo sea menor
+			float tempFear=1.0f-1.0f/(1.0f+pow(2.718f * 0.45f,-getDistanceToGhost(game,i)+20.0f));//logistica
 			if(tempFear>fear){
 				fear=tempFear;
 				escapeMove=getFarthestMove(game,ghostPositions[i]);
@@ -107,7 +108,8 @@ SimplePacmanController::getMove(const GameState& game){
 	//perseguir fantasmas azules
 	for(int i=0;i<4;i++){
 		if(ghostsEdible[i]){
-			float tempHunger=pow(100.0f-getDistanceToGhost(game,i),2)/pow(100.0,2);//cuadratica
+			//cambio de formula para que el hambre sea mayor
+			float tempHunger= 1.5f * (pow(100.0f-getDistanceToGhost(game,i),2)/pow(100.0,2));//cuadratica
 			if(tempHunger>hunger){
 				hunger=tempHunger;
 				eatGhostMove=getClosestMove(game,ghostPositions[i]);;
